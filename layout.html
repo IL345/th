@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Warna terang */
+            color: #000000; /* Teks hitam */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark {
+            background-color: black; /* Warna gelap */
+            color: #ffffff; /* Teks putih */
+        }
+        .container {
+            display: flex;
+        }
+        nav {
+            background-color: deepskyblue;
+            width: 100px;
+            height: 100vh;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 5px 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        nav ul li a:hover {
+            background-color: #0056b3;
+        }
+        main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        header {
+            background-color:dodgerblue;
+            color: white;
+           padding:0.1px;
+            text-align: left;
+            
+        }
+        .content {
+            display: none;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .slider img {
+            width: 100%;
+            height: auto;
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .form-control label {
+            display: block;
+        }
+        .form-control input, .form-control textarea {
+            width: 50%;
+            padding: 8px;
+            border:1px solid #333;
+            color:black;
+        }
+        .search-bar {
+            margin-bottom: 2px;
+        }
+        .search-bar input {
+            width: 30%;
+            padding: 7px;
+            border-radius:5px;
+            border:2px solid #333;
+            font-size: 16px;
+        }
+        
+ button{
+    color: #fff;
+    text-decoration: none;
+    background-color: #f0094a;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 8px 20px;
+    border-radius: 5px;
+    border:none;
+}
+        
+        .map {
+            width: 100%;
+            height: 400px;
+        }
+/* Toggle switch */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .theme-toggle input {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            -webkit-appearance: none;
+            background: #ccc;
+            outline: none;
+            border-radius: 25px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        .theme-toggle input:checked {
+            background: #333;
+        }
+        .theme-toggle input:before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            top: 1.5px;
+            left: 2px;
+            transition: 0.3s;
+        }
+        .theme-toggle input:checked:before {
+            transform: translateX(25px);
+        }
+
+    </style>
+    <script>
+        function showContent(id) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function filterContent() {
+            const query = document.querySelector('.search-bar input').value.toLowerCase();
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                const title = content.querySelector('h2')?.textContent.toLowerCase();
+                if (title && title.includes(query)) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+        }
+       // Mengubah tema saat toggle switch diaktifkan/dimatikan
+        window.onload = function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('change', function() {
+                toggleTheme();
+            });
+        };
+    </script>
+</head>
+<body>
+    <header>
+ <h3>Judul <a href="portfolio.html"><img src="roronoa.jpg"align="right"border="2"style="width:30px;height:30px;border-radius:50%;object-fit:cover;"></a></h3>
+    </header>
+    <div class="container">
+        <nav>
+            <ul>
+<div class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+        </div>
+                <li><a href="#" onclick="showContent('home')">Home</a></li>
+                <li><a href="#" onclick="showContent('about')">Tentang</a></li>
+                <li><a href="#" onclick="showContent('services')">Layanan</a></li>
+                <li><a href="#" onclick="showContent('alamat')">Alamat</a></li>
+                <li><a href="#" onclick="showContent('gallery')">Galeri</a></li>
+                <li><a href="#" onclick="showContent('blog')">Blog</a></li>
+                <li><a href="#" onclick="showContent('faq')">FAQ</a></li>
+                <li><a href="#" onclick="showContent('testimonials')">Testimoni</a></li>
+               <li><a href="#" onclick="showContent('contact')">Kontak</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari..." oninput="" />
+                 <button onclick="filterContent()">Cari</button><h2>
+            </div>
+            <section id="home" class="content" style="display: block;">
+                <h2></h2>
+                <div class="slider">
+                     
+                    <img src="https://via.placeholder.com/600x200" alt="Slider Gambar 1">
+                </div>
+                <p>Ini adalah bagian beranda aplikasi.</p>
+            </section>
+            <section id="about" class="content">
+                <h2>Tentang</h2>
+                <p>Informasi tentang aplikasi ini.</p>
+            </section>
+            <section id="services" class="content">
+                <h2>Layanan</h2>
+                <p>Detail tentang layanan yang kami tawarkan.</p>
+            </section>
+            <section id="alamat" class="content">
+                <h2>Alamat</h2>
+                <div class="map">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15861.084240083806!2d107.23095864057538!3d-6.358951335875109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699c2daafce231%3A0x3481ab3160f6a28b!2sPT%20Inoac%20Polytechno%20Indonesia%20Plant!5e0!3m2!1sid!2sid!4v1727400952300!5m2!1sid!2sid" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+            <section id="gallery" class="content">
+                <h2>Galeri</h2>
+                <div class="gallery">
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a>
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a>
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a><br>
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a>
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a>  
+                    <a href="portfolio.html"><img src="https://via.placeholder.com/100"></a> 
+                </div>
+            </section>
+            <section id="blog" class="content">
+                <h2>Blog</h2>
+                <p>Artikel terbaru akan muncul di sini.</p>
+            </section>
+            <section id="faq" class="content">
+                <h2>FAQ</h2>
+                <p>Pertanyaan yang sering diajukan.</p>
+            </section>
+            <section id="testimonials" class="content">
+                <h2>Testimoni</h2>
+                <p>Feedback dari pengguna atau klien.</p>
+            </section>
+           <section id="contact" class="content">
+                <div class="login-container">
+                <h2>kontak</h2>
+                <form>
+                <div class="form-control">
+                <label for="name">Nama:</label>
+                 <input type="text"id="name"name="name"placeholder="Nama"required>
+                  <div class="form-control">
+                <label for="email">email:</label>
+                 <input type="text"id="email"name="email"placeholder="Email"required>
+                  <div class="form-control">
+                 <label for="message">Pesan:</label>
+                 <textarea id="message"name="message"placeholder="message"required></textarea>
+                 </div>
+                 <button type="submit">Kirim</button>
+                </form> 
+           </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy;Email:<b><strong><a href="mailto:ihap968@gmail.com">ihap968@gmail.com</a></strong></b><br>
+           &copy;WA:0878-7047-7738</p>
+    </footer>
+</body>
+</html>

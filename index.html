@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+     background-image: url(batman.jpg);
+     background-position: center;
+     background-size:cover;
+}
+
+.login-container{ 
+     background-color:rgba(255,255,255,0.2);
+    backdrop-filter:blur(1px);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    width: 300px;
+    background-image: url();
+     background-position: center;
+     background-size:cover;
+}
+
+h3 {
+    font-size: 22px;
+    margin-top: 0;
+    text-align: center;
+    color:#fff;
+    border-bottom:3px solid #007bff;
+    padding-bottom: 5px;
+   
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.input-group input {
+   background: dodgerblue;
+  color:black;
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.checkbox-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color:#ffff
+}
+
+.login-button {
+    width: 103%;
+    padding: 10px;
+    align-item:center;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.1s, transform 0.1s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.login-button:active {
+    transform: scale(0.89);
+}
+
+</style>
+    <div class="login-container">
+          <h3><font color="blue">LOGIN</font><font color="yellow"> INOAC</font></h3>
+              <form action="layout.html">
+              <div class="input-group">
+                <input type="text" id="username" name="username" placeholder="Username&#128101" required>
+            </div>
+            <form action="layout.html">
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Password&#128274" required>
+            </div>
+           <div class="checkbox-group">
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Ingat saya</label>
+            </div>
+          <button type="submit" class="login-button"><b>Login</b>
+          </button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+<script>
+
+    
+    // Animasi saat klik login
+    button.style.transition = 'none';
+    button.style.backgroundColor = '#0056b3';
+    button.style.transform = 'scale(0.98)';
+    
+    setTimeout(() => {
+        button.style.transition = 'background-color 0.3s, transform 0.3s';
+        button.style.backgroundColor = '#007bff';
+        button.style.transform = 'scale(1)';
+        alert('Form submitted');
+    }, 300);
+});
+
+</script>
+</body>
+</html>
